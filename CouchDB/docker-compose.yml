@@ -1,0 +1,14 @@
+version: "2.4"
+
+services:
+  ds4db-db:
+    image: couchdb:3
+    container_name: ds4db-db
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=admin
+    volumes:
+      - ./data/couchdb:/opt/couchdb/data
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:5984:5984

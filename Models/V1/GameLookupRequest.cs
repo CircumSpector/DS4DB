@@ -1,6 +1,6 @@
 ﻿namespace DS4DB.Models.V1;
 
-public class GameRequest
+public class GameLookupRequest
 {
     public string Hash { get; set; }
 }

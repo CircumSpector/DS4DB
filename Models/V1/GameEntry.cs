@@ -36,7 +36,7 @@ public class GameEntry
     /// <summary>
     ///     Steam-specific properties.
     /// </summary>
-    public Steam Steam { get; set; } = new();
+    public Steam? Steam { get; set; }
 
     public ControllerCompatibility ControllerCompatibility { get; set; } = new();
 }

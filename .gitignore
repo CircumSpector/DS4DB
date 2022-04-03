@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /CouchDB/data
 /credentials.json
+data/
+docker-compose.yml

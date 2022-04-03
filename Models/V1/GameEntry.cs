@@ -49,12 +49,12 @@ public class MainExecutable
     /// <summary>
     ///     The executable name with extension and without path.
     /// </summary>
-    public string? Name { get; set; }
+    public string Name { get; set; } = null!;
 
     /// <summary>
     ///     The product- or file-version string from the executable metadata.
     /// </summary>
-    public string? Version { get; set; }
+    public string Version { get; set; } = null!;
 }
 
 /// <summary>
@@ -65,7 +65,7 @@ public class Steam
     /// <summary>
     ///     The unique application ID of the game in the Steam universe.
     /// </summary>
-    public ulong? AppId { get; set; }
+    public ulong AppId { get; set; }
 
     /// <summary>
     ///     Absolute URL to Steam Store Page.

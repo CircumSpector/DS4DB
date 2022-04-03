@@ -10,7 +10,7 @@ services:
     networks:
       - ds4db
       - web
-   labels:
+    labels:
       - traefik.enable=true
       - traefik.http.routers.ds4db.rule=Host(`playground.ds4windows.app`)
       - traefik.http.routers.ds4db.entrypoints=web-secure

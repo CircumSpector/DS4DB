@@ -1,0 +1,38 @@
+version: "2.4"
+
+services:
+  ds4db-app:
+    build: .
+    container_name: ds4db-app
+    volumes:
+      - ./appsettings.json:/app/appsettings.json
+      - ./credentials.json:/app/credentials.json
+    networks:
+      - ds4db
+      - web
+   labels:
+      - traefik.enable=true
+      - traefik.http.routers.ds4db.rule=Host(`playground.ds4windows.app`)
+      - traefik.http.routers.ds4db.entrypoints=web-secure
+      - traefik.http.routers.ds4db.tls=true
+      - traefik.http.routers.ds4db.tls.certresolver=le
+      - traefik.http.services.ds4db.loadbalancer.server.port=80
+
+  ds4db-db:
+    image: couchdb:3
+    container_name: ds4db-db
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=admin
+    volumes:
+      - ./data/couchdb:/opt/couchdb/data
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:35984:5984 # just for debugging
+    networks:
+      - ds4db
+
+networks:
+  ds4db:
+  web:
+    external: true
